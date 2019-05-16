@@ -8,7 +8,12 @@ class MainPage extends Component {
       "This is the main page"
       <PlatformSelector
       forLabel={'departure-station-selector'}
-      visibleLabel ={'From Station'}/>
+      visibleLabel={'From Station'}
+      stationType={'departure'}/>
+      <PlatformSelector
+      forLabel={'destination-station-selector'}
+      visibleLabel={'To Station'}
+      stationType={'destination'}/>
       </div>
     )
   }
