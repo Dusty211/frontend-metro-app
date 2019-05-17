@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import PlatformSelector from '../components/PlatformSelector.js'
+import DeparturePlatformSelector from '../components/DeparturePlatformSelector.js'
+import DestinationPlatformSelector from '../components/DestinationPlatformSelector.js'
 
 
 class MainPage extends Component {
@@ -8,11 +9,10 @@ class MainPage extends Component {
     return(
       <div id="mainpage">
       "This is the main page"
-      <PlatformSelector
+      <DeparturePlatformSelector
       forLabel={'departure-station-selector'}
-      visibleLabel={'From Station'}
-      stationType={'departure'}/>
-      <PlatformSelector
+      visibleLabel={'From Station'}/>
+      <DestinationPlatformSelector
       forLabel={'destination-station-selector'}
       visibleLabel={'To Station'}
       stationType={'destination'}/>

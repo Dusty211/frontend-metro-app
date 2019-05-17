@@ -10,6 +10,8 @@ export default rootReducer;
 
 function stationListReducer(state = [], action) {
   switch (action.type) {
+    case 'GENERATE_LIST':
+      return [...action.stationList]
     default:
       return state;
   }
@@ -18,7 +20,7 @@ function stationListReducer(state = [], action) {
 function selectedDepartureReducer(state = {}, action) {
   switch (action.type) {
     case 'SELECT_DEPARTURE':
-      return { ...action.stationName };
+      return { ...action.payload };
     default:
       return state;
   }
@@ -27,7 +29,7 @@ function selectedDepartureReducer(state = {}, action) {
 function selectedDestinationReducer(state = {}, action) {
   switch (action.type) {
     case 'SELECT_DESTINATION':
-      return { ...action.stationName };
+      return { ...action.payload };
     default:
       return state;
   }

@@ -1,13 +1,21 @@
-export const selectDeparture = stationName => {
+
+export const generateStationList = stationList => {
   return {
-    type: 'SELECT_DEPARTURE',
-    stationName
+    type: 'GENERATE_LIST',
+    stationList
   }
 }
 
-export const selectDestination = stationName => {
+export const selectDeparture = station => {
+  return {
+    type: 'SELECT_DEPARTURE',
+    payload: station
+  }
+}
+
+export const selectDestination = station => {
   return {
     type: 'SELECT_DESTINATION',
-    stationName
+    payload: station
   }
 }
