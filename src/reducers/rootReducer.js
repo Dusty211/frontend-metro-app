@@ -12,9 +12,15 @@ export default rootReducer;
 function sourceStationListReducer(state = [], action) {
   switch (action.type) {
     case 'GENERATE_SOURCE_LIST':
-      return [...action.stationList]
-    case 'SELECT_DESTINATION':
-      return [...state.filter(station => station.name !== action.payload.station.name)];
+      const listContains = new Set()
+      return [...action.stationList.filter(station => {
+        if (listContains.has(station.name)) {
+          return false
+        } else {
+          listContains.add(station.name)
+          return true
+        }
+      })]
     default:
       return state;
   }
@@ -23,9 +29,15 @@ function sourceStationListReducer(state = [], action) {
 function destinationStationListReducer(state = [], action) {
   switch (action.type) {
     case 'GENERATE_DESTINATION_LIST':
-      return [...action.stationList]
-    case 'SELECT_DEPARTURE':
-      return [...state.filter(station => station.name !== action.payload.station.name)];
+      const listContains = new Set()
+      return [...action.stationList.filter(station => {
+        if (listContains.has(station.name)) {
+          return false
+        } else {
+          listContains.add(station.name)
+          return true
+        }
+      })]
     default:
       return state;
   }

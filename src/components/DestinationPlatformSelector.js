@@ -29,13 +29,28 @@ class DestinationPlatformSelector extends React.Component {
   };
 
   handleChange = name => event => {
-    const stationObj = this.props.destinationStationList.find(station => {
-      return station.code === event.target.value
-    })
-    const selection = { [name]: stationObj }
-    this.props.selectDestination({...selection})
-    this.setState({ [name]: stationObj.code})
+    if (event.target.value !== ""){
+      const stationObj = this.props.destinationStationList.find(station => {
+        return station.code === event.target.value
+      })
+      const selection = { [name]: stationObj }
+      this.props.selectDestination({...selection})
+      this.setState({ [name]: stationObj.code})
+    } else {
+      this.props.selectDestination({})
+      this.setState({ [name]: ''})
+    }
   };
+
+  availableStations = () => {
+    if (this.props.selectedDeparture.station) {
+      return this.props.destinationStationList.filter(station => {
+        return station.name !== this.props.selectedDeparture.station.name
+      })
+    } else {
+      return this.props.destinationStationList
+    }
+  }
 
   render() {
     const { classes } = this.props;
@@ -51,7 +66,7 @@ class DestinationPlatformSelector extends React.Component {
               id: `${this.props.forLabel}`,
             }}>
             <option value="" />
-            {this.props.destinationStationList.sort((a,b) =>{
+            {this.availableStations().sort((a,b) =>{
               return a.name.localeCompare(b.name)
             }).map(
               station => <option key={station.id} value={station.code}>{station.name}</option>)}
@@ -68,7 +83,8 @@ DestinationPlatformSelector.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    destinationStationList: state.destinationStationList
+    destinationStationList: state.destinationStationList,
+    selectedDeparture: state.selectedDeparture
   };
 }
 
