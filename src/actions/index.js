@@ -1,7 +1,14 @@
 
-export const generateStationList = stationList => {
+export const generateSourceStationList = stationList => {
   return {
-    type: 'GENERATE_LIST',
+    type: 'GENERATE_SOURCE_LIST',
+    stationList
+  }
+}
+
+export const generateDestinationStationList = stationList => {
+  return {
+    type: 'GENERATE_DESTINATION_LIST',
     stationList
   }
 }

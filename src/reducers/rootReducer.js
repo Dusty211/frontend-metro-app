@@ -1,17 +1,31 @@
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  stationList: stationListReducer,
+  sourceStationList: sourceStationListReducer,
+  destinationStationList: destinationStationListReducer,
   selectedDeparture: selectedDepartureReducer,
   selectedDestination: selectedDestinationReducer,
 })
 
 export default rootReducer;
 
-function stationListReducer(state = [], action) {
+function sourceStationListReducer(state = [], action) {
   switch (action.type) {
-    case 'GENERATE_LIST':
+    case 'GENERATE_SOURCE_LIST':
       return [...action.stationList]
+    case 'SELECT_DESTINATION':
+      return [...state.filter(station => station.name !== action.payload.station.name)];
+    default:
+      return state;
+  }
+}
+
+function destinationStationListReducer(state = [], action) {
+  switch (action.type) {
+    case 'GENERATE_DESTINATION_LIST':
+      return [...action.stationList]
+    case 'SELECT_DEPARTURE':
+      return [...state.filter(station => station.name !== action.payload.station.name)];
     default:
       return state;
   }

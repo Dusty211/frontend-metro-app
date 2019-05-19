@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import MainPage from './containers/MainPage.js'
 
 //Redux:
-import { generateStationList } from './actions';
+import { generateSourceStationList } from './actions';
+import { generateDestinationStationList } from './actions';
 import { connect } from 'react-redux';
 
 //Call api
-import { stationFetch } from './fetches/stationFetch.js'
+import { sourceStationFetch } from './fetches/stationFetch.js'
+import { destinationStationFetch } from './fetches/stationFetch.js'
 
 class App extends Component {
 
   componentDidMount() {
-    stationFetch(this.props.generateStationList)
+    sourceStationFetch(this.props.generateSourceStationList)
+    destinationStationFetch(this.props.generateDestinationStationList)
   }
 
   render() {
@@ -21,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { generateStationList })(App);
+export default connect(null, { generateSourceStationList, generateDestinationStationList })(App);
