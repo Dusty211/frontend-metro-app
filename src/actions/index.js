@@ -26,3 +26,13 @@ export const selectDestination = station => {
     payload: station
   }
 }
+
+export const showItinerary = (sourceCode, destinationCode) => {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_ITINERARY' });
+    return fetch(
+      `http://localhost:3000/api/v1/itineraries/find?source_code=${sourceCode}&destination_code=${destinationCode}`)
+      .then(response => response.json())
+      .then(itinerary => dispatch({ type: 'SHOW_ITINERARY', itinerary }));
+  };
+}

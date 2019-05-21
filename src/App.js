@@ -7,8 +7,7 @@ import { generateDestinationStationList } from './actions';
 import { connect } from 'react-redux';
 
 //Call api
-import { sourceStationFetch } from './fetches/stationFetch.js'
-import { destinationStationFetch } from './fetches/stationFetch.js'
+import { sourceStationFetch, destinationStationFetch } from './fetches/stationFetch.js'
 
 class App extends Component {
 
