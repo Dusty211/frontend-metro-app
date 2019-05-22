@@ -5,6 +5,7 @@ const rootReducer = combineReducers({
   destinationStationList: destinationStationListReducer,
   selectedDeparture: selectedDepartureReducer,
   selectedDestination: selectedDestinationReducer,
+  currentItinerary: currentItinerary,
 })
 
 export default rootReducer;
@@ -46,7 +47,7 @@ function destinationStationListReducer(state = [], action) {
 function selectedDepartureReducer(state = {}, action) {
   switch (action.type) {
     case 'SELECT_DEPARTURE':
-      return { ...action.payload };
+      return { ...action.station };
     default:
       return state;
   }
@@ -55,7 +56,18 @@ function selectedDepartureReducer(state = {}, action) {
 function selectedDestinationReducer(state = {}, action) {
   switch (action.type) {
     case 'SELECT_DESTINATION':
-      return { ...action.payload };
+      return { ...action.station };
+    default:
+      return state;
+  }
+}
+
+function currentItinerary(state = {}, action) {
+  switch (action.type) {
+    case 'LOADING_ITINERARY':
+      return { ...state, loading: true };
+      case 'SHOW_ITINERARY':
+      return { ...state, loading: false, itinerary: action.itinerary };
     default:
       return state;
   }

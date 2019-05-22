@@ -16,18 +16,18 @@ export const generateDestinationStationList = stationList => {
 export const selectDeparture = station => {
   return {
     type: 'SELECT_DEPARTURE',
-    payload: station
+    station
   }
 }
 
 export const selectDestination = station => {
   return {
     type: 'SELECT_DESTINATION',
-    payload: station
+    station
   }
 }
 
-export const showItinerary = (sourceCode, destinationCode) => {
+export const fetchItinerary = (sourceCode, destinationCode) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ITINERARY' });
     return fetch(
