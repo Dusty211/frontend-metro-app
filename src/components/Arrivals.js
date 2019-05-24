@@ -7,9 +7,23 @@ class Arrivals extends Component {
 
   render() {
 
+    const arrivals = () => {
+      if (this.props.currentArrivals.arrivals) {
+        return [...this.props.currentArrivals.arrivals]
+      } else {
+        return []
+      }
+    }
+
     return(
       <div>
-      "Arrivals component"
+      <br/>Arrivals:<br/>
+      Minutes - Line - Cars - Destination<br/>
+      <ul>
+      {arrivals().map(arrival => {
+        return(<li key={arrival.id}>{`${arrival.minutes} min. -- ${arrival.line} -- ${arrival.cars} car -- ${arrival.destination}`}</li>)
+      })}
+      </ul>
       </div>
     )
   }
