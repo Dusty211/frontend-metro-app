@@ -9,7 +9,6 @@ class MainPage extends Component {
   render() {
     return(
       <div id="mainpage">
-      "This is the main page"
       <DeparturePlatformSelector
       forLabel={'departure-station-selector'}
       visibleLabel={'From Station'}/>

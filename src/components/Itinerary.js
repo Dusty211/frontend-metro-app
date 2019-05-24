@@ -10,33 +10,62 @@ class Itinerary extends Component {
     itinerary: ''
   }
 
-  updateItinerary = () => {
-
+  bothStationsSelected = () => {
+    return (!!this.props.selectedDeparture.station && !!this.props.selectedDestination.station)
   }
+
 
   componentDidUpdate() {
 
-    const bothStationsSelected = (!!this.props.selectedDeparture.station && !!this.props.selectedDestination.station)
+
 
     const itineraryNeedsUpdate = () => {
-      if (bothStationsSelected) {
+      if (this.bothStationsSelected()) {
         return this.state.itinerary !== `${this.props.selectedDeparture.station.code}${this.props.selectedDestination.station.code}`
       } else {
         return false
       }
     }
 
-    if (bothStationsSelected && itineraryNeedsUpdate()) {
+    if (this.bothStationsSelected() && itineraryNeedsUpdate()) {
       this.props.fetchItinerary(this.props.selectedDeparture.station.code, this.props.selectedDestination.station.code)
       this.setState({ itinerary: `${this.props.selectedDeparture.station.code}${this.props.selectedDestination.station.code}` });
     }
   }
 
   render() {
-    return(
+
+    let itineraryElement;
+
+    if (this.props.currentItinerary.itinerary) {
+      const peak = this.props.currentItinerary.itinerary.peak_fare.toFixed(2)
+      const offpeak = this.props.currentItinerary.itinerary.off_peak_fare.toFixed(2)
+      const senior = this.props.currentItinerary.itinerary.senior_fare.toFixed(2)
+      const time = this.props.currentItinerary.itinerary.time
+      const miles = this.props.currentItinerary.itinerary.miles
+      itineraryElement =
       <div>
-      itinerary component
+        {`From: ${this.props.selectedDeparture.station.name} => ${this.props.selectedDestination.station.name}`}
+        <br/>
+        <br/>
+        {`$${peak} Peak`}<br/>{`$${offpeak} Off-Peak`}<br/>{`$${senior} Senior/Disabled`}
+        <br/>
+        <br/>
+        {`Estimated trim time: ${time} minutes`}
+        <br/>
+        {`Distance: ${miles} miles`}
       </div>
+    } else {
+      itineraryElement =
+      <div>
+        {"Please select departure and destination stations."}
+      </div>
+    }
+
+    // debugger;
+
+    return(
+      itineraryElement
     )
   }
 }
