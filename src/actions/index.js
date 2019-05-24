@@ -36,3 +36,13 @@ export const fetchItinerary = (sourceCode, destinationCode) => {
       .then(itinerary => dispatch({ type: 'SHOW_ITINERARY', itinerary }));
   };
 }
+
+export const fetchArrivals = (code) => {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_ARRIVALS' });
+    return fetch(
+      `http://192.168.1.240:3000/api/v1/arrivals/find?code=${code}`)
+      .then(response => response.json())
+      .then(arrivals => dispatch({ type: 'SHOW_ARRIVALS', arrivals }));
+  };
+}
