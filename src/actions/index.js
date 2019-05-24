@@ -31,7 +31,7 @@ export const fetchItinerary = (sourceCode, destinationCode) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ITINERARY' });
     return fetch(
-      `http://localhost:3000/api/v1/itineraries/find?source_code=${sourceCode}&destination_code=${destinationCode}`)
+      `http://192.168.1.240:3000/api/v1/itineraries/find?source_code=${sourceCode}&destination_code=${destinationCode}`)
       .then(response => response.json())
       .then(itinerary => dispatch({ type: 'SHOW_ITINERARY', itinerary }));
   };

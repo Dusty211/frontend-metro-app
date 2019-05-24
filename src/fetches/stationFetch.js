@@ -1,7 +1,7 @@
 
 
 export function sourceStationFetch(dispatchCb){
-  fetch('http://localhost:3000/api/v1/platforms/source')
+  fetch('http://192.168.1.240:3000/api/v1/platforms/source')
   .then(r => r.json())
   .then(data => {
     dispatchCb(data)
@@ -9,7 +9,7 @@ export function sourceStationFetch(dispatchCb){
 }
 
 export function destinationStationFetch(dispatchCb){
-  fetch('http://localhost:3000/api/v1/platforms/destination')
+  fetch('http://192.168.1.240:3000/api/v1/platforms/destination')
   .then(r => r.json())
   .then(data => {
     dispatchCb(data)
