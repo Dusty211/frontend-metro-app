@@ -34,6 +34,12 @@ export const fetchItinerary = (sourceCode, destinationCode) => {
   };
 }
 
+export const clearItinerary = () => {
+  return {
+    type: 'CLEAR_ITINERARY'
+  }
+}
+
 export const fetchArrivals = (code) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ARRIVALS' });

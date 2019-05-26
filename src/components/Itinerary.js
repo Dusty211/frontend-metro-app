@@ -2,34 +2,8 @@ import React, { Component } from 'react';
 
 //Redux:
 import { connect } from 'react-redux';
-import { fetchItinerary } from '../actions';
 
 class Itinerary extends Component {
-
-  state = {
-    itinerary: ''
-  }
-
-  bothStationsSelected = () => {
-    return (!!this.props.selectedDeparture.station && !!this.props.selectedDestination.station)
-  }
-
-
-  componentDidUpdate() {
-
-    const itineraryNeedsUpdate = () => {
-      if (this.bothStationsSelected()) {
-        return this.state.itinerary !== `${this.props.selectedDeparture.station.code}${this.props.selectedDestination.station.code}`
-      } else {
-        return false
-      }
-    }
-
-    if (this.bothStationsSelected() && itineraryNeedsUpdate()) {
-      this.props.fetchItinerary(this.props.selectedDeparture.station.code, this.props.selectedDestination.station.code)
-      this.setState({ itinerary: `${this.props.selectedDeparture.station.code}${this.props.selectedDestination.station.code}` });
-    }
-  }
 
   render() {
 
@@ -43,8 +17,6 @@ class Itinerary extends Component {
       const miles = this.props.currentItinerary.itinerary.miles
       itineraryElement =
       <div>
-        {`From: ${this.props.selectedDeparture.station.name} => ${this.props.selectedDestination.station.name}`}
-        <br/>
         <br/>
         {`$${peak} Peak`}<br/>{`$${offpeak} Off-Peak`}<br/>{`$${senior} Senior/Disabled`}
         <br/>
@@ -68,10 +40,8 @@ class Itinerary extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    selectedDeparture: state.selectedDeparture,
-    selectedDestination: state.selectedDestination,
-    currentItinerary: state.currentItinerary
+    currentItinerary: state.currentItinerary,
   };
 }
 
-export default connect(mapStateToProps, { fetchItinerary })(Itinerary)
+export default connect(mapStateToProps, null )(Itinerary)

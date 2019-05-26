@@ -67,7 +67,9 @@ function currentItinerary(state = {}, action) {
   switch (action.type) {
     case 'LOADING_ITINERARY':
       return { ...state, loading: true };
-      case 'SHOW_ITINERARY':
+    case 'CLEAR_ITINERARY':
+      return {};
+    case 'SHOW_ITINERARY':
       return { ...state, loading: false, itinerary: action.itinerary };
     default:
       return state;
