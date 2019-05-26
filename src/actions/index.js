@@ -4,7 +4,7 @@ export const generateStationLists = () => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_STATIONS'});
     return fetch(
-      `${hostAddress}/api/v1/platforms/source`)
+      `${hostAddress}/api/v1/platforms`)
       .then(response => response.json())
       .then(stationList => dispatch({ type: 'GENERATE_STATION_LISTS', stationList }));
   }
