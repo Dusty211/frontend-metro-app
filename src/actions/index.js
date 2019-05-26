@@ -1,3 +1,4 @@
+import { hostAddress } from '../fetches/hostAddress'
 
 export const generateSourceStationList = stationList => {
   return {
@@ -31,7 +32,7 @@ export const fetchItinerary = (sourceCode, destinationCode) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ITINERARY' });
     return fetch(
-      `http://192.168.1.240:3000/api/v1/itineraries/find?source_code=${sourceCode}&destination_code=${destinationCode}`)
+      `${hostAddress}/api/v1/itineraries/find?source_code=${sourceCode}&destination_code=${destinationCode}`)
       .then(response => response.json())
       .then(itinerary => dispatch({ type: 'SHOW_ITINERARY', itinerary }));
   };
@@ -41,7 +42,7 @@ export const fetchArrivals = (code) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ARRIVALS' });
     return fetch(
-      `http://192.168.1.240:3000/api/v1/arrivals/find?code=${code}`)
+      `${hostAddress}/api/v1/arrivals/find?code=${code}`)
       .then(response => response.json())
       .then(arrivals => dispatch({ type: 'SHOW_ARRIVALS', arrivals }));
   };
