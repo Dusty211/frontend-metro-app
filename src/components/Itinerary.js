@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 //Redux:
 import { connect } from 'react-redux';
 import { fetchItinerary } from '../actions';
-import { fetchArrivals } from '../actions';
 
 class Itinerary extends Component {
 
@@ -29,7 +28,6 @@ class Itinerary extends Component {
     if (this.bothStationsSelected() && itineraryNeedsUpdate()) {
       this.props.fetchItinerary(this.props.selectedDeparture.station.code, this.props.selectedDestination.station.code)
       this.setState({ itinerary: `${this.props.selectedDeparture.station.code}${this.props.selectedDestination.station.code}` });
-      this.props.fetchArrivals(this.props.selectedDeparture.station.code)
     }
   }
 
@@ -76,4 +74,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { fetchItinerary, fetchArrivals })(Itinerary)
+export default connect(mapStateToProps, { fetchItinerary })(Itinerary)
