@@ -18,8 +18,6 @@ class Itinerary extends Component {
 
   componentDidUpdate() {
 
-
-
     const itineraryNeedsUpdate = () => {
       if (this.bothStationsSelected()) {
         return this.state.itinerary !== `${this.props.selectedDeparture.station.code}${this.props.selectedDestination.station.code}`
@@ -63,8 +61,6 @@ class Itinerary extends Component {
         {"Please select departure and destination stations."}
       </div>
     }
-
-    // debugger;
 
     return(
       itineraryElement

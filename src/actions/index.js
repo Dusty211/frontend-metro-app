@@ -1,16 +1,12 @@
 import { hostAddress } from '../fetches/hostAddress'
 
-export const generateSourceStationList = stationList => {
-  return {
-    type: 'GENERATE_SOURCE_LIST',
-    stationList
-  }
-}
-
-export const generateDestinationStationList = stationList => {
-  return {
-    type: 'GENERATE_DESTINATION_LIST',
-    stationList
+export const generateStationLists = () => {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_STATIONS'});
+    return fetch(
+      `${hostAddress}/api/v1/platforms/source`)
+      .then(response => response.json())
+      .then(stationList => dispatch({ type: 'GENERATE_STATION_LISTS', stationList }));
   }
 }
 

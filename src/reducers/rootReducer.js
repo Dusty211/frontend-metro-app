@@ -13,7 +13,7 @@ export default rootReducer;
 
 function sourceStationListReducer(state = [], action) {
   switch (action.type) {
-    case 'GENERATE_SOURCE_LIST':
+    case 'GENERATE_STATION_LISTS':
       const listContains = new Set()
       return [...action.stationList.filter(station => {
         if (listContains.has(station.name)) {
@@ -30,7 +30,7 @@ function sourceStationListReducer(state = [], action) {
 
 function destinationStationListReducer(state = [], action) {
   switch (action.type) {
-    case 'GENERATE_DESTINATION_LIST':
+    case 'GENERATE_STATION_LISTS':
       const listContains = new Set()
       return [...action.stationList.filter(station => {
         if (listContains.has(station.name)) {
