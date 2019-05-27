@@ -80,7 +80,9 @@ function currentArrivals(state = {}, action) {
   switch (action.type) {
     case 'LOADING_ARRIVALS':
       return { ...state, loading: true };
-      case 'SHOW_ARRIVALS':
+    case 'CLEAR_ARRIVALS':
+      return {};
+    case 'SHOW_ARRIVALS':
       return { ...state, loading: false, arrivals: action.arrivals };
     default:
       return state;

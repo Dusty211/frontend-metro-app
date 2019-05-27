@@ -49,3 +49,9 @@ export const fetchArrivals = (code) => {
       .then(arrivals => dispatch({ type: 'SHOW_ARRIVALS', arrivals }));
   };
 }
+
+export const clearArrivals = () => {
+  return {
+    type: 'CLEAR_ARRIVALS'
+  }
+}

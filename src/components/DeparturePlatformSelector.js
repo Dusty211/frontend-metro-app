@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
 //Redux:
-import { selectDeparture, fetchArrivals, clearItinerary, fetchItinerary } from '../actions';
+import { selectDeparture, fetchArrivals, clearArrivals, clearItinerary, fetchItinerary } from '../actions';
 import { connect } from 'react-redux';
 
 const styles = theme => ({
@@ -41,6 +41,7 @@ class DeparturePlatformSelector extends React.Component {
       this.props.fetchArrivals(stationObj.code)
     } else {
       this.props.selectDeparture({})
+      this.props.clearArrivals()
       this.props.clearItinerary()
       this.setState({ [name]: ''})
     }
@@ -92,4 +93,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { selectDeparture, fetchArrivals, fetchItinerary, clearItinerary })(withStyles(styles)(DeparturePlatformSelector));
+export default connect(mapStateToProps, { selectDeparture, fetchArrivals, clearArrivals, fetchItinerary, clearItinerary })(withStyles(styles)(DeparturePlatformSelector));
