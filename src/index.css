@@ -13,5 +13,7 @@ code {
 }
 
 #mainpage {
+  max-width: 980px;
+  margin: auto;
   padding: 5px;
 }

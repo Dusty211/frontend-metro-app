@@ -21,7 +21,8 @@ const styles = theme => ({
     overflowX: "auto"
   },
   table: {
-    minWidth: 200
+    minWidth: 200,
+    maxWidth: "100%"
   }
 });
 
