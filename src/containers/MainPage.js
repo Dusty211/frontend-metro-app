@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import DeparturePlatformSelector from '../components/DeparturePlatformSelector.js'
 import DestinationPlatformSelector from '../components/DestinationPlatformSelector.js'
 import Itinerary from '../components/Itinerary.js'
-import Arrivals from '../components/Arrivals.js'
+import Arrivals from '../containers/Arrivals.js'
 
 
 class MainPage extends Component {

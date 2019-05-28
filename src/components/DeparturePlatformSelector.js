@@ -28,6 +28,8 @@ class DeparturePlatformSelector extends React.Component {
     station: '',
   };
 
+  arrivalInterval = null;
+
   handleChange = name => event => {
     if (event.target.value !== ""){
       const stationObj = this.props.sourceStationList.find(station => {
@@ -39,7 +41,17 @@ class DeparturePlatformSelector extends React.Component {
       }
       this.setState({ [name]: stationObj.code })
       this.props.fetchArrivals(stationObj.code)
+      if (this.arrivalInterval) {
+        clearInterval(this.arrivalInterval)
+        this.arrivalInterval = setInterval(() => this.props.fetchArrivals(stationObj.code), 30000);
+      } else {
+        this.arrivalInterval = setInterval(() => this.props.fetchArrivals(stationObj.code), 30000);
+      }
     } else {
+      if (this.arrivalInterval) {
+        clearInterval(this.arrivalInterval)
+        this.arrivalInterval = null;
+      }
       this.props.selectDeparture({})
       this.props.clearArrivals()
       this.props.clearItinerary()
