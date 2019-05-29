@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DeparturePlatformSelector from '../components/DeparturePlatformSelector.js'
 import DestinationPlatformSelector from '../components/DestinationPlatformSelector.js'
-import Itinerary from '../components/Itinerary.js'
+import Itinerary from '../containers/Itinerary.js'
 import Arrivals from '../containers/Arrivals.js'
 
 

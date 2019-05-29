@@ -40,11 +40,12 @@ class Arrivals extends Component {
 
       <div>
         <br/>
+        <Paper className={classes.root}>
         {this.props.selectedDeparture.station ? this.props.selectedDeparture.station.lines.map( line => {
           return <LensIcon key={line.id} style={{color: `${line.color}`}}/>
         }) : null}
         {this.props.selectedDeparture.station ? `${this.props.selectedDeparture.station.name} departures:` : null}
-        <Paper className={classes.root}>
+
         {arrivals().map(platform => {
           let id = 0;
           const createData = (line, minutes, cars, destination) => {

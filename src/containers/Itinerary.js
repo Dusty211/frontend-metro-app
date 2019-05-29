@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ArrivalsTable from '../components/ItineraryTable'
 
 //Redux:
 import { connect } from 'react-redux';
@@ -15,15 +16,10 @@ class Itinerary extends Component {
       const senior = this.props.currentItinerary.itinerary.senior_fare.toFixed(2)
       const time = this.props.currentItinerary.itinerary.time
       const miles = this.props.currentItinerary.itinerary.miles
+      const row = { time, miles, peak, offpeak, senior };
       itineraryElement =
       <div>
-        <br/>
-        {`$${peak} Peak`}<br/>{`$${offpeak} Off-Peak`}<br/>{`$${senior} Senior/Disabled`}
-        <br/>
-        <br/>
-        {`Estimated trim time: ${time} minutes`}
-        <br/>
-        {`Distance: ${miles} miles`}
+      <ArrivalsTable row={row} />
       </div>
     } else {
       itineraryElement =
