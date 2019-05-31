@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import StillThere from './StillThere'
+import LocationSort from './LocationSort'
 
 //Redux:
 import { selectDeparture, fetchArrivals, clearArrivals, clearItinerary, fetchItinerary } from '../actions';
@@ -24,11 +26,59 @@ const styles = theme => ({
 });
 
 class DeparturePlatformSelector extends React.Component {
+
   state = {
     station: '',
+    dialog: false,
+    sortByDistance: false,
+    userLat: null,
+    userLon: null,
   };
 
+  // modified code from 'haversine' npm package:
+  haversine = (start, end) => {
+    const toRad = num => num * Math.PI / 180
+    const R = 3960  //radii for miles
+    const dLat = toRad(end.latitude - start.latitude)
+    const dLon = toRad(end.longitude - start.longitude)
+    const lat1 = toRad(start.latitude)
+    const lat2 = toRad(end.latitude)
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    return R * c
+  }
+
+  stationDistance = (userLat, userLon, stationLat, stationLon) => {
+    const start = {
+      latitude: userLat,
+      longitude: userLon
+    }
+    const end = {
+      latitude: stationLat,
+      longitude: stationLon
+    }
+    return this.haversine(start, end)
+  }
+
+
+  startArrivals = () => {
+    this.props.fetchArrivals(this.state.station)
+    clearInterval(this.arrivalInterval)
+    this.arrivalInterval = setInterval(() => this.props.fetchArrivals(this.state.station), 30000);
+    clearTimeout(this.intervalTimeout)
+    this.intervalTimeout = setTimeout(() => {
+      clearInterval(this.arrivalInterval)
+      this.setState({ dialog: true })
+    }, 4 * 60 * 1000);
+  }
+
+  imBack = () => {
+    this.setState({ dialog: false }, this.startArrivals)
+  }
+
   arrivalInterval = null;
+  intervalTimeout = null;
 
   handleChange = name => event => {
     if (event.target.value !== ""){
@@ -39,19 +89,10 @@ class DeparturePlatformSelector extends React.Component {
       if (this.props.selectedDestination.station) {
         this.props.fetchItinerary(this.props.selectedDestination.station.code, stationObj.code)
       }
-      this.setState({ [name]: stationObj.code })
-      this.props.fetchArrivals(stationObj.code)
-      if (this.arrivalInterval) {
-        clearInterval(this.arrivalInterval)
-        this.arrivalInterval = setInterval(() => this.props.fetchArrivals(stationObj.code), 30000);
-      } else {
-        this.arrivalInterval = setInterval(() => this.props.fetchArrivals(stationObj.code), 30000);
-      }
+      this.setState({ [name]: stationObj.code }, this.startArrivals)
     } else {
-      if (this.arrivalInterval) {
-        clearInterval(this.arrivalInterval)
-        this.arrivalInterval = null;
-      }
+      clearInterval(this.arrivalInterval)
+      clearTimeout(this.intervalTimeout)
       this.props.selectDeparture({})
       this.props.clearArrivals()
       this.props.clearItinerary()
@@ -69,9 +110,50 @@ class DeparturePlatformSelector extends React.Component {
     }
   }
 
+  setLocation = (cb) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => this.setState({
+        userLat: position.coords.latitude,
+        userLon: position.coords.longitude
+      }, cb));
+    } else {
+      console.log('Location not supported')
+    }
+  }
+
+  handleSortByDistanceChange = event => {
+    if (event.target.checked) {
+      this.setLocation(() => this.setState({ sortByDistance: true }));
+    } else {
+      this.setState({ sortByDistance: false })
+    }
+  };
+
   render() {
+
     const { classes } = this.props;
+
+    let selectorOptions;
+
+    if (this.state.sortByDistance === true) {
+      const stationClone = [...this.availableStations()]
+      selectorOptions = stationClone.map((station) =>{
+        station.distance = Math.round(this.stationDistance(this.state.userLat, this.state.userLon, station.lat, station.lon) * 100) / 100;
+        return station
+      }).sort((a,b) =>{
+        return a.distance - b.distance
+      }).map(
+        station => <option key={station.id} value={station.code}>{`${station.name} (${station.distance})mi.`}</option>)
+    } else {
+      selectorOptions = this.availableStations().sort((a,b) =>{
+        return a.name.localeCompare(b.name)
+      }).map(
+        station => <option key={station.id} value={station.code}>{station.name}</option>)
+    }
+
     return (
+      <React.Fragment>
+
       <div className={classes.root}>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor={this.props.forLabel}>{this.props.visibleLabel}</InputLabel>
@@ -83,13 +165,13 @@ class DeparturePlatformSelector extends React.Component {
               id: `${this.props.forLabel}`,
             }}>
             <option value="" />
-            {this.availableStations().sort((a,b) =>{
-              return a.name.localeCompare(b.name)
-            }).map(
-              station => <option key={station.id} value={station.code}>{station.name}</option>)}
+            {selectorOptions}
           </NativeSelect>
+          <LocationSort active={this.state.sortByDistance} handleSortByDistanceChange={this.handleSortByDistanceChange} />
         </FormControl>
+        <StillThere dialogOpen={this.state.dialog} imBack={this.imBack}/>
       </div>
+      </React.Fragment>
     );
   }
 }
