@@ -9,7 +9,7 @@ class LocationSort extends React.Component {
   render() {
     return (
       <div>
-      Sort by distance (Laser Distance)
+      Sort closest first (Laser Distance)
         <Switch
           checked={this.props.active}
           onChange={this.props.handleSortByDistanceChange}
