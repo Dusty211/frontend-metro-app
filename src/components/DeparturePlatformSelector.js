@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import StillThere from './StillThere'
 import LocationSort from './LocationSort'
+import Directions from './Directions'
 
 //Redux:
 import { selectDeparture, fetchArrivals, clearArrivals, clearItinerary, fetchItinerary } from '../actions';
@@ -168,6 +169,7 @@ class DeparturePlatformSelector extends React.Component {
             {selectorOptions}
           </NativeSelect>
           <LocationSort active={this.state.sortByDistance} handleSortByDistanceChange={this.handleSortByDistanceChange} />
+          <Directions />
         </FormControl>
         <StillThere dialogOpen={this.state.dialog} imBack={this.imBack}/>
       </div>

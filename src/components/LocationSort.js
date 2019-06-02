@@ -3,13 +3,10 @@ import Switch from '@material-ui/core/Switch';
 
 class LocationSort extends React.Component {
 
-
-
-
   render() {
     return (
       <div>
-      Sort closest first (Laser Distance)
+      Sort by distance (Location Reqd.)
         <Switch
           checked={this.props.active}
           onChange={this.props.handleSortByDistanceChange}
