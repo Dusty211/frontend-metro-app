@@ -1,9 +1,12 @@
 import React from 'react';
+
+//Material-ui:
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import Paper from "@material-ui/core/Paper";
 
 //Redux:
 import { selectDestination, fetchItinerary, clearItinerary } from '../actions';
@@ -13,6 +16,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginTop: theme.spacing.unit * 1,
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -59,6 +63,7 @@ class DestinationPlatformSelector extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
+      <Paper>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor={this.props.forLabel}>{this.props.visibleLabel}</InputLabel>
           <NativeSelect
@@ -75,6 +80,7 @@ class DestinationPlatformSelector extends React.Component {
               station => <option key={station.id} value={station.code}>{station.name}</option>)}
           </NativeSelect>
         </FormControl>
+        </Paper>
       </div>
     );
   }

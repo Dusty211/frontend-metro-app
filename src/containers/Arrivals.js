@@ -39,7 +39,6 @@ class Arrivals extends Component {
     return(
 
       <div>
-        <br/>
         <Paper className={classes.root}>
         {this.props.selectedDeparture.station ? this.props.selectedDeparture.station.lines.map( line => {
           return <LensIcon key={line.id} style={{color: `${line.color}`}}/>

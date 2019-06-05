@@ -1,4 +1,6 @@
 import React from 'react';
+
+//Material-ui:
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -7,6 +9,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import StillThere from './StillThere'
 import LocationSort from './LocationSort'
 import Directions from './Directions'
+import Paper from "@material-ui/core/Paper";
 
 //Redux:
 import { selectDeparture, fetchArrivals, clearArrivals, clearItinerary, fetchItinerary } from '../actions';
@@ -16,6 +19,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginTop: theme.spacing.unit * 1,
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -153,9 +157,8 @@ class DeparturePlatformSelector extends React.Component {
     }
 
     return (
-      <React.Fragment>
-
       <div className={classes.root}>
+      <Paper>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor={this.props.forLabel}>{this.props.visibleLabel}</InputLabel>
           <NativeSelect
@@ -172,8 +175,8 @@ class DeparturePlatformSelector extends React.Component {
           <Directions />
         </FormControl>
         <StillThere dialogOpen={this.state.dialog} imBack={this.imBack}/>
+        </Paper>
       </div>
-      </React.Fragment>
     );
   }
 }

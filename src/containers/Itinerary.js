@@ -24,7 +24,7 @@ class Itinerary extends Component {
     } else {
       itineraryElement =
       <div>
-        {"Please select departure and destination stations."}
+        {""}
       </div>
     }
 
