@@ -28,8 +28,8 @@ class ArrivalsTable extends Component {
 
     const { classes } = this.props;
 
-    const tableRowStyle = { height: "25px", paddingLeft: 15, paddingRight: 15};
-    const tableHeaderStyle = { height: "25px", paddingLeft: 15, paddingRight: 15};
+    const tableRowStyle = { height: "25px", paddingLeft: 5, paddingRight: 5};
+    const tableHeaderStyle = { height: "25px", paddingLeft: 5, paddingRight: 5};
 
     return(
 
