@@ -16,14 +16,16 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginTop: theme.spacing.unit * 0,
+  },
+  paperStyle: {
+    width: "100%",
     marginTop: theme.spacing.unit * 1,
+    overflowX: "auto"
   },
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
   },
 });
 
@@ -63,7 +65,7 @@ class DestinationPlatformSelector extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-      <Paper>
+      <Paper className={classes.paperStyle}>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor={this.props.forLabel}>{this.props.visibleLabel}</InputLabel>
           <NativeSelect
