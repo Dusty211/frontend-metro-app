@@ -40,7 +40,7 @@ class Arrivals extends Component {
               <TableCell style={tableHeaderStyle}>Line</TableCell>
               <TableCell style={tableHeaderStyle} align="right">Min.</TableCell>
               <TableCell style={tableHeaderStyle} align="right">Cars</TableCell>
-              <TableCell style={tableHeaderStyle} align="right">Destination</TableCell>
+              <TableCell style={tableHeaderStyle} align="right">End of Line</TableCell>
 
             </TableRow>
           </TableHead>

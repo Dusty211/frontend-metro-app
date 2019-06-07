@@ -39,10 +39,10 @@ class ArrivalsTable extends Component {
           <TableHead>
             <TableRow style={tableHeaderStyle}>
               <TableCell style={tableHeaderStyle}>Trip Time</TableCell>
-              <TableCell style={tableHeaderStyle} align="right">Distance (miles)</TableCell>
-              <TableCell style={tableHeaderStyle} align="right">Peak Fare</TableCell>
-              <TableCell style={tableHeaderStyle} align="right">Off-peak</TableCell>
-              <TableCell style={tableHeaderStyle} align="right">Senior/Disabled</TableCell>
+              <TableCell style={tableHeaderStyle} align="center">Distance (miles)</TableCell>
+              <TableCell style={tableHeaderStyle} align="center">Peak Fare</TableCell>
+              <TableCell style={tableHeaderStyle} align="center">Off-peak</TableCell>
+              <TableCell style={tableHeaderStyle} align="center">Senior/Disabled</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
