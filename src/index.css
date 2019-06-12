@@ -26,7 +26,9 @@ code {
   width: 100%;
   height: 43px;
   background-color: black;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', Tahoma, Sans-Serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 35px;
   text-align: center;
   padding-top: 10px;
@@ -38,7 +40,9 @@ code {
   width: 100%;
   height: auto;
   background-color: black;
-  font-family: 'Averia Serif Libre', cursive;
+  font-family: 'Averia Serif Libre', Tahoma, Sans-Serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 14px;
   text-align: center;
   padding-top: 0px;
@@ -52,7 +56,9 @@ code {
   bottom: 0;
   height: auto;
   background-color: black;
-  font-family: 'Averia Serif Libre', cursive;
+  font-family: 'Averia Serif Libre', Tahoma, Sans-Serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 14px;
   text-align: center;
   padding-top: 2px;
