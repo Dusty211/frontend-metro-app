@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import DeparturePlatformSelector from '../components/DeparturePlatformSelector.js'
-import DestinationPlatformSelector from '../components/DestinationPlatformSelector.js'
-import Itinerary from '../containers/Itinerary.js'
-import Arrivals from '../containers/Arrivals.js'
+import DeparturePlatformSelector from '../components/DeparturePlatformSelector'
+import DestinationPlatformSelector from '../components/DestinationPlatformSelector'
+import Itinerary from '../containers/Itinerary'
+import Arrivals from '../containers/Arrivals'
+import Incidents from '../components/Incidents'
 
 
 class MainPage extends Component {
@@ -19,6 +20,7 @@ class MainPage extends Component {
       stationType={'destination'}/>
       <Itinerary />
       <Arrivals />
+      <Incidents />
       </div>
     )
   }

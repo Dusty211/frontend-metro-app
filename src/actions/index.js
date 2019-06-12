@@ -55,3 +55,19 @@ export const clearArrivals = () => {
     type: 'CLEAR_ARRIVALS'
   }
 }
+
+export const fetchIncidents = () => {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_INCIDENTS' });
+    return fetch(
+      `${hostAddress}/api/v1/incidents`)
+      .then(response => response.json())
+      .then(incidents => dispatch({ type: 'SHOW_INCIDENTS', incidents }));
+  };
+}
+
+export const clearIncidents = () => {
+  return {
+    type: 'CLEAR_INCIDENTS'
+  }
+}

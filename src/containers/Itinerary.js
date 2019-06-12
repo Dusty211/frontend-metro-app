@@ -19,7 +19,7 @@ class Itinerary extends Component {
       const row = { time, miles, peak, offpeak, senior };
       itineraryElement =
       <div>
-      <ArrivalsTable row={row} />
+      <ArrivalsTable row={row} peak={this.props.currentItinerary.itinerary.peak} />
       </div>
     } else {
       itineraryElement =

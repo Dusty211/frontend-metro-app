@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   selectedDestination: selectedDestinationReducer,
   currentItinerary: currentItinerary,
   currentArrivals: currentArrivals,
+  incidents: incidents,
 })
 
 export default rootReducer;
@@ -84,6 +85,19 @@ function currentArrivals(state = {}, action) {
       return {};
     case 'SHOW_ARRIVALS':
       return { ...state, loading: false, arrivals: action.arrivals };
+    default:
+      return state;
+  }
+}
+
+function incidents(state = {}, action) {
+  switch (action.type) {
+    case 'LOADING_INCIDENTS':
+      return { ...state, loading: true };
+    case 'CLEAR_INCIDENTS':
+      return {};
+    case 'SHOW_INCIDENTS':
+      return { ...state, loading: false, incidentList: action.incidents };
     default:
       return state;
   }

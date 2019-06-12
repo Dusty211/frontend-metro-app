@@ -28,6 +28,7 @@ class ArrivalsTable extends Component {
 
     const { classes } = this.props;
 
+    const tableRowStyleBoldGreen = { color: 'green', fontWeight: 'bold', height: "25px", paddingLeft: 5, paddingRight: 5};
     const tableRowStyle = { height: "25px", paddingLeft: 5, paddingRight: 5};
     const tableHeaderStyle = { height: "25px", paddingLeft: 5, paddingRight: 5};
 
@@ -49,8 +50,8 @@ class ArrivalsTable extends Component {
               <TableRow style={tableRowStyle}>
                 <TableCell style={tableRowStyle} component="th" scope="row">{`${this.props.row.time} min`}</TableCell>
                 <TableCell style={tableRowStyle} align="center">{this.props.row.miles}</TableCell>
-                <TableCell style={tableRowStyle} align="center">${this.props.row.peak}</TableCell>
-                <TableCell style={tableRowStyle} align="center">${this.props.row.offpeak}</TableCell>
+                <TableCell style={this.props.peak ? tableRowStyleBoldGreen : tableRowStyle} align="center">${this.props.row.peak}</TableCell>
+                <TableCell style={this.props.peak ? tableRowStyle : tableRowStyleBoldGreen} align="center">${this.props.row.offpeak}</TableCell>
                 <TableCell style={tableRowStyle} align="center">${this.props.row.senior}</TableCell>
               </TableRow>
           </TableBody>
