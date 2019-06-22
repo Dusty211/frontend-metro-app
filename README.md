@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[SimpleAFMetro.com (Back End)](https://github.com/Dusty211/backend-metro-app)
 
-## Available Scripts
+## SimpleAFMetro.com (Front End)
+This is the front end for [SimpleAFMetro.com](https://www.simpleafmetro.com) - a web app for the DC Metrorail system. SimpleAFMetro is a single page web application that was designed with mobile use in mind. It is a simple and straightforward way to find the closest Metro station and navigate you there if you so choose. Simplicity and utility were the first priorities when designing this app.
 
-In the project directory, you can run:
+## Features
+- Mobile-optimized selectors for starting and ending stations
+- Selectable option to sort stations by distance from the user (HTML5 Geolocation)
+- It can open the device's native GPS navigation app and route the user to the selected station
+- Live arrivals that update and re-render automatically every 30 seconds
+- Live Alerts and Incidents
+- Trip information including distance, time, and currently applicable fare.
 
-### `npm start`
+## Motivation for SimpleAFMetro.com
+I created this project mainly for two reasons.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+First: There were several technologies I thought it would be good to learn more about. I wanted to work on something where I could learn more about making use of a third party API that provides live data. I wanted to use Redux.js to be able to update and render live data to various React.js components. I also wanted to create a project that was designed to be used on mobile devices and use location data.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Second: I wanted to create something that solved a problem. I felt like there wasn't really a simple way to get just the relevant DC Metrorail information I needed and nothing else, so I decided to make it a project of mine.
 
-### `npm test`
+## Made with:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React.js](https://github.com/facebook/create-react-app)
+- [React-redux](https://github.com/reduxjs/react-redux)
+- [Redux-thunk](https://github.com/reduxjs/redux-thunk)
+- [Material-ui](https://github.com/mui-org/material-ui)
 
-### `npm run build`
+## Development Environment Installation
+#### Fork and clone the repo.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Install all packages with npm:
+`$ cd <root dir of clone>`  
+`$ npm install`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+#### Start the local React dev server:
+`$ npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Reference
 
-### `npm run eject`
+Information on the API can be found here: [SimpleAFMetro.com (Back End)](https://github.com/Dusty211/backend-metro-app)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contribute
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you would like to contribute, feel free to submit a pull request or reach me at [personincharge@simpleAFMetro.com](mailto:personincharge@simpleAFMetro.com).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+#### The code that is specific to SimpleAFMetro.com and any other elements that are specific to its design are the property of Kyle Houghton and may not be used in any way without his express consent.  
+© Kyle Houghton 
