@@ -1,30 +1,30 @@
-import { hostAddress } from '../fetches/hostAddress'
+import { hostAddress } from '../fetches/hostAddress' //api url
 
-export const generateStationLists = () => {
+export const generateStationLists = () => { //Async thunk action to populate selector
   return (dispatch) => {
     dispatch({ type: 'LOADING_STATIONS'});
     return fetch(
       `${hostAddress}/api/v1/platforms`)
       .then(response => response.json())
-      .then(stationList => dispatch({ type: 'GENERATE_STATION_LISTS', stationList }));
+      .then(stationList => dispatch({ type: 'GENERATE_STATION_LISTS', stationList })); //async
   }
 }
 
-export const selectDeparture = station => {
+export const selectDeparture = station => { //Action to update selectedDeparture
   return {
     type: 'SELECT_DEPARTURE',
     station
   }
 }
 
-export const selectDestination = station => {
+export const selectDestination = station => { //Action to update selectedDestination
   return {
     type: 'SELECT_DESTINATION',
     station
   }
 }
 
-export const fetchItinerary = (sourceCode, destinationCode) => {
+export const fetchItinerary = (sourceCode, destinationCode) => {  //When both selectors have stations selected
   return (dispatch) => {
     dispatch({ type: 'LOADING_ITINERARY' });
     return fetch(
@@ -34,13 +34,13 @@ export const fetchItinerary = (sourceCode, destinationCode) => {
   };
 }
 
-export const clearItinerary = () => {
+export const clearItinerary = () => { //When one or none of the selectors have stations selected
   return {
     type: 'CLEAR_ITINERARY'
   }
 }
 
-export const fetchArrivals = (code) => {
+export const fetchArrivals = (code) => {  //Fetch live arrivals
   return (dispatch) => {
     dispatch({ type: 'LOADING_ARRIVALS' });
     return fetch(
@@ -50,13 +50,13 @@ export const fetchArrivals = (code) => {
   };
 }
 
-export const clearArrivals = () => {
+export const clearArrivals = () => { //When source station is not selected
   return {
     type: 'CLEAR_ARRIVALS'
   }
 }
 
-export const fetchIncidents = () => {
+export const fetchIncidents = () => {  //Incident data
   return (dispatch) => {
     dispatch({ type: 'LOADING_INCIDENTS' });
     return fetch(
@@ -66,7 +66,7 @@ export const fetchIncidents = () => {
   };
 }
 
-export const clearIncidents = () => {
+export const clearIncidents = () => { //clears store of incidents prior to incidents being fetched when window is opened
   return {
     type: 'CLEAR_INCIDENTS'
   }

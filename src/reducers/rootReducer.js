@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers({ //So we don't have a massive case statement
   sourceStationList: sourceStationListReducer,
   destinationStationList: destinationStationListReducer,
   selectedDeparture: selectedDepartureReducer,
@@ -15,8 +15,8 @@ export default rootReducer;
 function sourceStationListReducer(state = [], action) {
   switch (action.type) {
     case 'GENERATE_STATION_LISTS':
-      const listContains = new Set()
-      return [...action.stationList.filter(station => {
+      const listContains = new Set() //Use a set to filter out duplicate stations
+      return [...action.stationList.filter(station => { //return stationList after filtering duplicates
         if (listContains.has(station.name)) {
           return false
         } else {
@@ -32,8 +32,8 @@ function sourceStationListReducer(state = [], action) {
 function destinationStationListReducer(state = [], action) {
   switch (action.type) {
     case 'GENERATE_STATION_LISTS':
-      const listContains = new Set()
-      return [...action.stationList.filter(station => {
+      const listContains = new Set() //Use a set to filter out duplicate stations
+      return [...action.stationList.filter(station => { //return stationList after filtering duplicates
         if (listContains.has(station.name)) {
           return false
         } else {
