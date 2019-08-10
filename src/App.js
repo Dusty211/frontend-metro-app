@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 class App extends Component {
 
   componentDidMount() {
-    this.props.generateStationLists()
+    this.props.generateStationLists() //This action hits two reducers to populate both station selectors
   }
 
   render() {
