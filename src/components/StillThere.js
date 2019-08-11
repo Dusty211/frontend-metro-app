@@ -25,7 +25,7 @@ class StillThere extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.props.imBack} color="primary">
+            <Button onClick={this.props.imBack} color="primary"> {/*imBack is a callback passed down from DeparturePlatformSelector*/}
               I'm back!
             </Button>
           </DialogActions>

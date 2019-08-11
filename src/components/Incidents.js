@@ -41,24 +41,25 @@ class Incidents extends Component {
     open: false,
   };
 
-  updateIncidents = () => {
+  updateIncidents = () => { //global store
     this.props.clearIncidents();
     this.props.fetchIncidents();
   }
 
   handleClickOpen = () => {
     this.updateIncidents();
-    this.setState({ open: true });
+    this.setState({ open: true });  //Open full page dialog
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false }); //Close dialog
   };
 
+  //This function uses a regex to take a semicolon seperated list of line codes and return an array of line colors.
   formatLineData = (input) => {
-    const color = {GR: "green", BL: "blue", SV: "silver", RD: "red", OR: "orange", YL: "yellow"}
-    const line_a = input.split(/;[\s]?/).filter(function(fn) { return fn !== ''; })
-    return line_a.map(line => color[line])
+    const color = {GR: "green", BL: "blue", SV: "silver", RD: "red", OR: "orange", YL: "yellow"} //Converter hash
+    const line_a = input.split(/;[\s]?/).filter(function(fn) { return fn !== ''; }) //Semicolon delimited string to array of line codes
+    return line_a.map(line => color[line]) //Convert line codes to line colors
   }
 
   render() {
@@ -95,6 +96,7 @@ class Incidents extends Component {
 
                   primary={incident.incident_type}
                   secondary={incident.description} />
+                  {/*Below, the line color coded dots are rendered*/}
                   {this.formatLineData(incident.lines_affected).map(line_affected => {
                     return <LensIcon key={`${incident.id}${line_affected}`} style={{ color: `${line_affected}`}}/>
                   })}
