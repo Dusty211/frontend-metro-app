@@ -8,7 +8,7 @@ class Itinerary extends Component {
 
   render() {
 
-    let itineraryElement;
+    let itineraryElement = null; //Null will be value of element if there is no itinerary
 
     if (this.props.currentItinerary.itinerary) {
       const peak = this.props.currentItinerary.itinerary.peak_fare.toFixed(2)
@@ -20,11 +20,6 @@ class Itinerary extends Component {
       itineraryElement =
       <div>
       <ArrivalsTable row={row} peak={this.props.currentItinerary.itinerary.peak} />
-      </div>
-    } else {
-      itineraryElement =
-      <div>
-        {""}
       </div>
     }
 

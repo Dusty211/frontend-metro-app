@@ -12,7 +12,7 @@ class MainPage extends Component {
   render() {
     return(
       <div id="mainpage">
-      <Information />
+      <Information /> {/*Question mark button that opens info dialog*/}
       <DeparturePlatformSelector
       forLabel={'departure-station-selector'}
       visibleLabel={'From Station'}/>
@@ -20,9 +20,9 @@ class MainPage extends Component {
       forLabel={'destination-station-selector'}
       visibleLabel={'To Station'}
       stationType={'destination'}/>
-      <Itinerary />
-      <Arrivals />
-      <Incidents />
+      <Itinerary /> {/*When departure and destination are selected*/}
+      <Arrivals /> {/*When departure is selected*/}
+      <Incidents /> {/*Incident button that opens incidents dialog*/}
       </div>
     )
   }
