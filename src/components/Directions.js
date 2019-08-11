@@ -20,21 +20,21 @@ const styles = theme => ({
 class Directions extends Component {
 
   getUrl = () => {
-    if (this.props.selectedDeparture.station) {
-      const coords = {
+    if (this.props.selectedDeparture.station) { //If departure station is chosen
+      const coords = { //Selected departure stations's location
         lat: this.props.selectedDeparture.station.lat,
         lon: this.props.selectedDeparture.station.lon
       }
-      const isPlatform = platform => navigator.platform.includes(platform);
-      if (
+      const isPlatform = platform => navigator.platform.includes(platform); //Get platform
+      if ( //If this is an Apple platform
         (isPlatform('iPhone')) ||
         (isPlatform('iPod')) ||
         (isPlatform('iPad')) ||
-        (isPlatform('Pike'))
+        (isPlatform('Pike')) //Opera Mini on iPhone
       ) {
-        window.open(`maps://maps.google.com/maps?daddr=${coords.lat},${coords.lon}&amp;ll=`);
+        window.open(`maps://maps.google.com/maps?daddr=${coords.lat},${coords.lon}&amp;ll=`); //Open using default map app
       } else { //else incl android and non-mobile
-        window.open(`https://maps.google.com/maps?daddr=${coords.lat},${coords.lon}&amp;ll=`);
+        window.open(`https://maps.google.com/maps?daddr=${coords.lat},${coords.lon}&amp;ll=`);//Open in Google maps
       }
     }
   }
