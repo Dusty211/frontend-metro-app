@@ -40,6 +40,7 @@ class DeparturePlatformSelector extends React.Component {
     sortByDistance: false,
     userLat: null, /*For HTML5 geolocation*/
     userLon: null, /*For HTML5 geolocation*/
+    locationLoading: false,
   };
 
   // modified code from 'haversine' npm package:
@@ -138,7 +139,9 @@ class DeparturePlatformSelector extends React.Component {
   handleSortByDistanceChange = event => {
     if (event.target.checked) {
       //SetLocation() and pass 'set sortByDistance: true' as the callback
-      this.setLocation(() => this.setState({ sortByDistance: true }));
+      this.setState({locationLoading: true}, this.setLocation(() => {
+        this.setState({ sortByDistance: true }, this.setState({locationLoading: false}))
+      }))
     } else {
       this.setState({ sortByDistance: false })
     }
@@ -182,7 +185,7 @@ class DeparturePlatformSelector extends React.Component {
             {selectorOptions} {/*The rest of the options*/}
           </NativeSelect>
           {/*Sort by distance switch*/}
-          <LocationSort active={this.state.sortByDistance} handleSortByDistanceChange={this.handleSortByDistanceChange} />
+          <LocationSort active={this.state.sortByDistance} handleSortByDistanceChange={this.handleSortByDistanceChange} loading={this.state.locationLoading} />
           <Directions /> {/*Directions button*/}
         </FormControl>
         <StillThere dialogOpen={this.state.dialog} imBack={this.imBack}/> {/*Not visible until triggered with setState dialog: true*/}
