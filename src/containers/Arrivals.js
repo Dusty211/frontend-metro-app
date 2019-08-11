@@ -47,7 +47,7 @@ class Arrivals extends Component {
         {/*Render <station name> departures: if departure station is selected*/}
         {this.props.selectedDeparture.station ? `${this.props.selectedDeparture.station.name} departures:` : null}
 
-        {arrivals().map(platform => { /*map through each platform in arrivals() from function above.*/
+        {arrivals().map(platform => { /*map through each platform in arrivals() from function above, and draw Table component for each platform*/
           let id = 0;
           const createData = (line, minutes, cars, destination) => { /*Used below to create each table row*/
             id += 1; /*Gets incremented below in 'rows'*/

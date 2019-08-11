@@ -45,7 +45,7 @@ class Arrivals extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.rows.map(row => (
+            {this.props.rows.map(row => ( /*Each row of ArrivalTable*/
               <TableRow style={tableRowStyle} key={row.id}>
                 <TableCell style={tableRowStyle} component="th" scope="row"><LensIcon style={{color: `${row.line}`}}/></TableCell>
                 <TableCell style={tableRowStyle} align="right">{row.minutes}</TableCell>
