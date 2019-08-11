@@ -114,7 +114,7 @@ class DeparturePlatformSelector extends React.Component {
     }
   };
 
-  availableStations = () => { //Removes the selected destination from the source selector if a destination is currently selected.
+  availableStations = () => { //Removes the selected destination station from the source selector if a destination is currently selected.
     if (this.props.selectedDestination.station) {
       return this.props.sourceStationList.filter(station => {
         return station.name !== this.props.selectedDestination.station.name //Return everything except selected destination station
