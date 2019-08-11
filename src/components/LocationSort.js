@@ -17,7 +17,7 @@ class LocationSort extends React.Component {
           />
         </div>
         <div style={{display : 'inline-block'}}>
-          {this.props.location ? <Progress /> : null }
+          {this.props.loading ? <Progress /> : null }
         </div>
       </div>
     );

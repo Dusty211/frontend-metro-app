@@ -139,9 +139,7 @@ class DeparturePlatformSelector extends React.Component {
   handleSortByDistanceChange = event => {
     if (event.target.checked) {
       //SetLocation() and pass 'set sortByDistance: true' as the callback
-      this.setState({locationLoading: true}, this.setLocation(() => {
-        this.setState({ sortByDistance: true }, this.setState({locationLoading: false}))
-      }))
+      this.setState({locationLoading: true}, this.setLocation(() => this.setState({ sortByDistance: true }, this.setState({locationLoading: false}))))
     } else {
       this.setState({ sortByDistance: false })
     }
