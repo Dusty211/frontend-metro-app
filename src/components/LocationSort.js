@@ -7,7 +7,7 @@ class LocationSort extends React.Component {
   render() {
     return (
       <div>
-        <div style={{width: 300, display : 'inline-block'}}>
+        <div style={{fontSize: 12, width: 'auto', display : 'inline-block'}}>
         Sort by distance (Location Reqd.)
           <Switch
             checked={this.props.active}
