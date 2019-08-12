@@ -26,6 +26,10 @@ Second: I wanted to create something that solved a problem. I felt like there wa
 - [Material-ui](https://github.com/mui-org/material-ui)
 
 ## Development Environment Installation
+
+#### Prerequisites:
+- A working installation of Node.js and the ability to run the correct version
+
 #### Fork and clone the repo.
 
 #### Install all packages with npm:
@@ -34,6 +38,9 @@ Second: I wanted to create something that solved a problem. I felt like there wa
 
 #### Start the local React dev server:
 `$ npm start`
+
+#### To run the backend API locally:
+- Normally, this single page application will use the remote production API at api.simpleafmetro.com/api/v1/. To use the API locally, set it up according to the instructions in [SimpleAFMetro.com (Back End)](https://github.com/Dusty211/backend-metro-app), and change the URL in src/fetches/hostAddress.js according to where the API is running locally.  You may need to change cors policy in config/initializers/cors.rb.
 
 ## API Reference
 
