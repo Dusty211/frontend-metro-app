@@ -29,6 +29,9 @@ Second: I wanted to create something that solved a problem. I felt like there wa
 
 #### Prerequisites:
 - A working installation of Node.js and the ability to run the correct version
+- Node.js v12.6.0
+- npm v6.10.2
+- nvm v0.34.0
 
 #### Fork and clone the repo.
 
